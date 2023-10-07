@@ -1,0 +1,124 @@
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>SEOVO</title>
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif"}
+table.TableGrid
+	{border:1.0pt solid black;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>SEOVO</title>
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif"}
+table.TableGrid
+	{border:1.0pt solid black;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+</head>
+
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<body>
+
+<table class="MsoNormalTable" border="0" cellpadding="0" width="1217" id="table3" height="35">
+	<tr>
+		<td valign="top" style="width: 1211px; height: 31px; padding: .75pt" align="left">
+		<p class="text">
+		<span lang="en-us"><font face="Calibri" size="5" color="#0000FF">
+		<b>Online Indoor Visual Odometry with Semantic Assistance under Implicit Epipolar Constraints</b></font></span><p class="text">
+		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF">
+		Yang Chen<sup>1</sup>,&nbsp;
+		Lin Zhang</font></span><font face="Calibri" size="4" color="#0000FF"><sup>1</sup><span lang="en-us">, 
+		Shengjie Zhao</span><sup>1</sup><span lang="en-us">, 
+		and Yicong Zhou</span><sup>2</sup></font><p class="text">
+		<span lang="en-us">
+		<font face="Calibri" size="4" color="#0000FF"><sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China</font></span><p class="text">
+		<font face="Calibri" size="4" color="#0000FF"><sup>2</sup><span lang="en-us">Department of Computer and Information Science, University of Macau, China</span></font></td>
+	</tr>
+	</table>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Introduction</font></b></span></p>
+<p>
+<span style="font-size: 13pt; font-family: Calibri; color: windowtext" lang="EN-US">
+This is the website for our paper &quot;Online Indoor Visual Odometry with Semantic Assistance under Implicit Epipolar Constraints<span style="color: #000000"> 
+</span>&quot;.</span>
+<img border="0" src="SEOVO_pipeline.png" width="880" height="575">
+</p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Our Collected Dataset</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">
+To better confirm the benefit of our SEOVO in textureless environments, 
+we collected two video sequences using the Realsense d453i camera in our lab and a closed corridor next to it 
+respectively which contain large areas of texturelss regions. The data can be downloaded 
+<a href="https://pan.baidu.com/s/1J_AjdB9oAE5PmTtu1wW9Pg?pwd=b9jy">here</a>.
+The "laboratory" and the "corridor" sequences in it include both RGB images and corresponding depth maps. Also, the camera intrinsics are provided.
+The original resolutions of all collected images are 640 &times 480, which are resized to 320 &times 256 during online training.
+Typical image samples contained in this dataset are shown below. </font></span></p>
+<p>
+<img border="0" src="lab-scenes.png" width="880" height="475"></p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Source Codes</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt"> 
+<a href="https://github.com/dokidoki-yo/SEOVO">SEOVOCode</a></font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">Note: all these 
+codes related to SEOVO are implemented by Pytorch and we run them on Nvidia GeForce RTX 3070. </font></span></p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Experimental Results</font></b></span></p>
+<font color="gray">
+<li><p> Table I and Table III quantitatively give the performance of SEOVO and typical competitors on the public
+7-scenes dataset in depth and pose estimation, respectively. Our SEOVO outperform other competitors
+in nearly all scenes, demonstrating its effectiveness owning to the introduction of the geometric constraint and the 
+semantic prior.
+</p></li>
+</font>
+<p><img border="0" src="depth_7scenes.png" width="85%"></p>
+<p><img border="0" src="pose_7scenes.png" width="85%"></p>
+<font color="gray">
+<li><p>The depth maps estimated by SEOVO and other counterparts are given below. It can be seen that
+our depth maps have sharper edges with high accurcy thanks to the "multi-grad" map.
+</p></li>
+</font>
+<p><img border="0" src="depth_qualitative_7scenes.png" width="380" height="375"></p>
+<font color="gray">
+<li><p>The reconstruction results show our advantages in maintaining the global consistency of maps, producing high quality
+3D models which have satisfactory geometric structures and are consistent with perception.
+</p></li></font>
+<p><img border="0" src="map_7scenes.png" width="65%"></p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Demo Videos</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The following 
+are the demo video demonstrating the pipeline and the performance of our SEOVO in pose an depth estimation for indoor reconstruction. </font></span></p>
+<video src="SEOVO.mp4" width="600" height="450" controls preload></video>
+<hr>
+<p align="justify"><font face="Calibri">Last update: <span lang="en-us">Dec. 17,
+</span>2022</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+</body>
+</html>
